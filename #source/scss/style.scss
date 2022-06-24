@@ -1,5 +1,80 @@
 // Обнуление стилей
 @import "nullstyle.scss";
 // Подключение шрифтов
-
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
 //SCSS
+.main {
+    font-family: 'Roboto Mono', monospace;
+}
+.content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 50px 0;
+}
+.notebook {
+		&__content {
+            display: flex;
+            flex-direction: row;
+            padding: 20px;
+		}
+
+		&__notes {
+            flex: 1 1 30%;
+            margin: 0 25px 0 0;
+		}
+
+		&__item {
+            cursor: pointer;
+            font-size: 20px;
+            margin: 0 0 20px 0;
+            border: 1px dashed #000;
+            padding: 5px 10px;
+            width: 100%;
+            border-radius: 5px;
+            text-align: center;
+		}
+
+		&__new {
+		}
+
+		&__newitem {
+            font-size: 20px;
+            text-align: center;
+            padding: 5px 10px;
+            border-radius: 5px;
+            width: 100%;
+            background-color: rgb(255, 196, 0);
+		}
+
+		&__text {
+            flex: 1 1 70%;
+		}
+
+		&__textarea {
+            font-size: 16px;
+            resize: none;
+            border-radius: 5px;
+            padding: 10px;
+            border: 1px solid #000;
+            width: 100%;
+            height: 400px;
+            margin: 0 0 10px 0;
+		}
+
+		&__save {
+		}
+
+		&__button {
+            font-size: 20px;
+            text-align: center;
+            padding: 5px 10px;
+            border-radius: 5px;
+            width: 100%;
+            background-color: rgb(212, 212, 212);
+		}
+}
+.note {
+
+		&__items {
+		}
+}
