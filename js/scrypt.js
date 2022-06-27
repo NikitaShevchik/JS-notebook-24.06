@@ -100,13 +100,11 @@ function allNotesClose() {
     }
 }
 
-
 //mouseenter
-
 
 // notesList.addEventListener("mouseenter", function(e){
 //     for (let b of notesList.children){
-        
+
 //         b.addEventListener("mouseenter", function(){
 //             b.classList.add('_bin')
 //         });
@@ -141,3 +139,25 @@ function allNotesClose() {
 // }, 1000)
 
 
+
+
+
+/*-----------ДОРАБОТАТЬ УДАЛЕНИЕ. ПО клику - удалять строку (написана). 
+Удалить из массива ключ. Переделать логику, чтоб не повторялись ключи
+и айди + Переработать им присвоение-------------*/
+
+removeNoteButton.addEventListener('click', remove);
+
+function remove(e) {
+    for (let note of notesList.children) {
+        if (note.classList.contains('_active')) {
+            var numberNote = note.id;
+            for (let k of noteSaves) {
+                if (k.key == numberNote) {
+                    noteSaves.splice(noteSaves.indexOf(k), 1)
+                }
+            }
+            console.log(notesList.removeChild(note))
+        }
+    }
+}
