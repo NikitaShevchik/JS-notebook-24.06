@@ -22,44 +22,27 @@ function saveNote() {
             for (let edit of noteSaves) {
                 if (edit.key == numberOfNote) {
                     edit.value = textArea.value;
-                    console.log(noteSaves);
                 }
             }
         }
     }
 }
 
-
-
 notesList.addEventListener('click', function (e) {
     switchNote(e);
     openNote(e, e.target.id);
-    // console.log(e.target)
-    // console.log(e.target.id)
-    // for (let i of notesList.children) {
-    //     if (e.target == i) {
-    //         i.classList.toggle('_active');
-    //     } else {
-    //         i.classList.remove('_active')
-    //     }
-    // }
-    // e.target.classList.toggle('_active');
-
-    // textArea.value = noteSaves[e.target.id - 1]
+    allNotesClose()
 })
 
-// notesList.children.addEventListener('click', function(){
-//     console.log('YES')
-// })
-
-
 newBoteButton.addEventListener('click', newEmptyNote);
+
 function newEmptyNote() {
     textArea.value = '';
     notesList.innerHTML += `<li class="notebook__item" id="${notesList.children.length + 1}">Запись ${notesList.children.length + 1}</li>`
     saverNote(notesList.children.length, textArea.value);
     newNoteActiveAdder()
     console.log(noteSaves)
+    allNotesClose()
 }
 
 /*-----------Отображает нужную запись выбранной ячейки-----------*/
@@ -84,6 +67,7 @@ function switchNote(e) {
             i.classList.remove('_active')
         }
     }
+
 }
 /*-----------Создает новой записи класс активный-------------*/
 function newNoteActiveAdder() {
@@ -91,4 +75,24 @@ function newNoteActiveAdder() {
         i.classList.remove('_active');
     }
     notesList.lastChild.classList.add('_active');
+}
+
+
+function allNotesClose() {
+    var clear = true;
+    for (let k of notesList.children) {
+        if (k.classList.contains('_active')) {
+            clear = false;
+        }
+    }
+    if (!clear) {
+        textArea.classList.add('_active');
+        textArea.removeAttribute('disabled', 'disabled');
+        saveNoteButton.classList.add('_active');
+    } else {
+        // textArea.value = '';
+        textArea.classList.remove('_active');
+        textArea.setAttribute('disabled', 'disabled');
+        saveNoteButton.classList.remove('_active');
+    }
 }

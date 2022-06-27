@@ -4,12 +4,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
 //SCSS
 .main {
-    font-family: 'Roboto Mono', monospace;
+      font-family: 'Roboto Mono', monospace;
 }
 .content {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 50px 0;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 50px 0;
 }
 .notebook {
 		&__content {
@@ -55,7 +55,7 @@
             resize: none;
             border-radius: 5px;
             padding: 10px;
-            border: 1px solid #000;
+            border: 1px solid rgba(0, 0, 0, 0.171);
             width: 100%;
             height: 400px;
             margin: 0 0 10px 0;
@@ -74,7 +74,6 @@
 		}
 }
 .note {
-
 		&__items {
 		}
 }
@@ -82,4 +81,11 @@
 
 .notebook__item._active{
       border: 3px solid #000;
+}
+.notebook__button._active{
+      background-color: rgb(255, 196, 0);
+}
+
+.notebook__textarea._active{
+      border: 1px solid #000;
 }
