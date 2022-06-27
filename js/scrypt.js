@@ -4,6 +4,7 @@ const saveNoteButton = document.querySelector('.notebook__button');
 const textArea = document.querySelector('.notebook__textarea');
 const notesList = document.querySelector('.note__items');
 const newBoteButton = document.querySelector('.notebook__newitem');
+const removeNoteButton = document.querySelector('.notebook__remove');
 
 const noteSaves = [];
 
@@ -89,10 +90,54 @@ function allNotesClose() {
         textArea.classList.add('_active');
         textArea.removeAttribute('disabled', 'disabled');
         saveNoteButton.classList.add('_active');
+        removeNoteButton.classList.add('_active');
     } else {
         // textArea.value = '';
         textArea.classList.remove('_active');
         textArea.setAttribute('disabled', 'disabled');
         saveNoteButton.classList.remove('_active');
+        removeNoteButton.classList.remove('_active');
     }
 }
+
+
+//mouseenter
+
+
+// notesList.addEventListener("mouseenter", function(e){
+//     for (let b of notesList.children){
+        
+//         b.addEventListener("mouseenter", function(){
+//             b.classList.add('_bin')
+//         });
+//         b.addEventListener("mouseout", function(){
+//             b.classList.remove('_bin')
+//         })
+//     }
+// })
+
+// function hoverItem() {
+//     const allItems = document.querySelectorAll('.notebook__item');
+//     for (let item of allItems) {
+//         item.addEventListener("mouseenter", function () {
+//             item.classList.add('_bin')
+//         });
+//     }
+//     for (let item of allItems) {
+//         item.addEventListener("mouseover", function () {
+//             item.classList.add('_bin')
+//         });
+//     }
+// }
+
+// items.addEventListener('hover', function (e) {
+//     for (let item of notesList.children) {
+//         if (e.target == item) {
+//             item.classList.add('_bin');
+//             console.log('bin')
+//         }
+//     }
+// })
+// }, 1000)
+
+

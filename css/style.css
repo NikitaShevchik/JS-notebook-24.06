@@ -104,6 +104,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .notebook__item {
   cursor: pointer;
+  position: relative;
   font-size: 20px;
   margin: 0 0 20px 0;
   border: 1px dashed #000;
@@ -120,6 +121,15 @@ h1, h2, h3, h4, h5, h6 {
   border-radius: 5px;
   width: 100%;
   background-color: #ffc400;
+}
+
+.notebook__remove {
+  margin: 20px 0 0 0;
+  font-size: 20px;
+  text-align: center;
+  padding: 5px 10px;
+  border-radius: 5px;
+  width: 50%;
 }
 
 .notebook__text {
@@ -139,6 +149,22 @@ h1, h2, h3, h4, h5, h6 {
   margin: 0 0 10px 0;
 }
 
+.notebook__save {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
 .notebook__button {
   font-size: 20px;
   text-align: center;
@@ -154,6 +180,11 @@ h1, h2, h3, h4, h5, h6 {
 
 .notebook__button._active {
   background-color: #ffc400;
+}
+
+.notebook__remove._active {
+  color: #fff;
+  background-color: #d10000;
 }
 
 .notebook__textarea._active {

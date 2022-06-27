@@ -25,6 +25,7 @@
 
 		&__item {
             cursor: pointer;
+            position: relative;
             font-size: 20px;
             margin: 0 0 20px 0;
             border: 1px dashed #000;
@@ -45,6 +46,14 @@
             width: 100%;
             background-color: rgb(255, 196, 0);
 		}
+            &__remove{
+                  margin: 20px 0 0 0;
+                  font-size: 20px;
+                  text-align: center;
+                  padding: 5px 10px;
+                  border-radius: 5px;
+                  width: 50%;
+            }
 
 		&__text {
             flex: 1 1 70%;
@@ -62,6 +71,10 @@
 		}
 
 		&__save {
+                  display: flex;
+                  flex-direction: column;
+                  justify-content: center;
+                  align-items: center;
 		}
 
 		&__button {
@@ -85,7 +98,34 @@
 .notebook__button._active{
       background-color: rgb(255, 196, 0);
 }
+.notebook__remove._active{                  
+      color: #fff;
+      background-color: rgb(209, 0, 0);
+}
 
 .notebook__textarea._active{
       border: 1px solid #000;
 }
+
+// .notebook__item._bin{
+//       &::after{
+//             content: '';
+//             position: absolute;
+//             width: 15px;
+//             height: 1px;
+//             background-color: red;
+//             top: 50%;
+//             right: 10px;
+//             transform: rotate(45deg);
+//       }
+//       &::before{
+//             content: '';
+//             position: absolute;
+//             width: 15px;
+//             height: 1px;
+//             background-color: red;
+//             top: 50%;
+//             right: 10px;
+//             transform: rotate(-45deg);
+//       }
+// }
