@@ -47,7 +47,8 @@
             background-color: rgb(255, 196, 0);
 		}
             &__remove{
-                  margin: 20px 0 0 0;
+                  cursor: auto;
+                  margin: 10px 0 0 0;
                   font-size: 20px;
                   text-align: center;
                   padding: 5px 10px;
@@ -84,6 +85,7 @@
             border-radius: 5px;
             width: 100%;
             background-color: rgb(212, 212, 212);
+            cursor: auto;
 		}
 }
 .note {
@@ -96,10 +98,12 @@
       border: 3px solid #000;
 }
 .notebook__button._active{
+      cursor: pointer;
       background-color: rgb(255, 196, 0);
 }
 .notebook__remove._active{                  
       color: #fff;
+      cursor: pointer;
       background-color: rgb(209, 0, 0);
 }
 
@@ -129,3 +133,48 @@
 //             transform: rotate(-45deg);
 //       }
 // }
+.popup {
+      font-family: 'Roboto Mono', monospace;
+      width: 100%;
+      height: 100%;
+      &__body {
+            display: none;
+            animation: opacity 1.5s ease 0s;
+            user-select: none;
+            position: absolute;
+            top: 30%;
+            left: 50%;
+            transform: translate(-50%, 0);
+            width: 200px;
+            height: 70px;
+            background-color: rgba(0, 0, 0, 0.9);
+            border-radius: 10px;
+      }
+
+      &__content {
+            height: 100%;
+            padding: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+      }
+      &__title {
+            color: #fff;
+      }
+}
+
+
+@keyframes opacity {
+      0%{
+            opacity: 1;
+      }
+      25%{
+            opacity: 1;
+      }
+      100%{
+            opacity: 0;
+      }  
+}
+.popup__body._open{
+      display: block;
+}

@@ -44,7 +44,6 @@ function newEmptyNote() {
     saverNote(notesCounter, textArea.value);
     notesCounter++;
     newNoteActiveAdder()
-    console.log(noteSaves)
     allNotesClose()
 }
 /*-----------Отображает нужную запись выбранной ячейки-----------*/
@@ -135,8 +134,6 @@ function allNotesClose() {
 // }, 1000)
 
 
-
-
 /*-----------ДОРАБОТАТЬ УДАЛЕНИЕ. ПО клику - удалять строку (написана). 
 Удалить из массива ключ. Переделать логику, чтоб не повторялись ключи
 и айди + Переработать им присвоение
@@ -147,13 +144,24 @@ removeNoteButton.addEventListener('click', remove);
 function remove(e) {
     for (let note of notesList.children) {
         if (note.classList.contains('_active')) {
+            deleteAnimation()
             var numberNote = note.id;
             for (let k of noteSaves) {
                 if (k.key == numberNote) {
                     noteSaves.splice(noteSaves.indexOf(k), 1)
                 }
             }
-            console.log(notesList.removeChild(note))
+            notesList.removeChild(note)
         }
     }
+    allNotesClose()
+}
+
+
+function deleteAnimation() {
+    const popup = document.querySelector('.popup__body');
+    popup.classList.add('_open');
+    setTimeout(() => {
+        popup.classList.remove('_open');
+    }, 1500);
 }
