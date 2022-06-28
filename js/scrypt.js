@@ -31,23 +31,24 @@ function saveNote() {
 
 notesList.addEventListener('click', function (e) {
     switchNote(e);
-    openNote(e, e.target.id);
+    openNote(e.target.id);
     allNotesClose()
 })
 
 newBoteButton.addEventListener('click', newEmptyNote);
 
+var notesCounter = 1;
 function newEmptyNote() {
     textArea.value = '';
-    notesList.innerHTML += `<li class="notebook__item" id="${notesList.children.length + 1}">Запись ${notesList.children.length + 1}</li>`
-    saverNote(notesList.children.length, textArea.value);
+    notesList.innerHTML += `<li class="notebook__item" id="${notesCounter}">Запись ${notesCounter}</li>`
+    saverNote(notesCounter, textArea.value);
+    notesCounter++;
     newNoteActiveAdder()
     console.log(noteSaves)
     allNotesClose()
 }
-
 /*-----------Отображает нужную запись выбранной ячейки-----------*/
-function openNote(target, id) {
+function openNote(id) {
     const numberNote = id;
     for (let k of noteSaves) {
         if (k.key == numberNote) {
@@ -68,7 +69,6 @@ function switchNote(e) {
             i.classList.remove('_active')
         }
     }
-
 }
 /*-----------Создает новой записи класс активный-------------*/
 function newNoteActiveAdder() {
@@ -99,9 +99,7 @@ function allNotesClose() {
         removeNoteButton.classList.remove('_active');
     }
 }
-
 //mouseenter
-
 // notesList.addEventListener("mouseenter", function(e){
 //     for (let b of notesList.children){
 
@@ -113,7 +111,6 @@ function allNotesClose() {
 //         })
 //     }
 // })
-
 // function hoverItem() {
 //     const allItems = document.querySelectorAll('.notebook__item');
 //     for (let item of allItems) {
@@ -127,7 +124,6 @@ function allNotesClose() {
 //         });
 //     }
 // }
-
 // items.addEventListener('hover', function (e) {
 //     for (let item of notesList.children) {
 //         if (e.target == item) {
@@ -141,10 +137,10 @@ function allNotesClose() {
 
 
 
-
 /*-----------ДОРАБОТАТЬ УДАЛЕНИЕ. ПО клику - удалять строку (написана). 
 Удалить из массива ключ. Переделать логику, чтоб не повторялись ключи
-и айди + Переработать им присвоение-------------*/
+и айди + Переработать им присвоение
+UPD: СДЕЛАНО-------------*/
 
 removeNoteButton.addEventListener('click', remove);
 
