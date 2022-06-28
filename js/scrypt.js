@@ -3,19 +3,13 @@
 const saveNoteButton = document.querySelector('.notebook__button');
 const textArea = document.querySelector('.notebook__textarea');
 const notesList = document.querySelector('.note__items');
-const newBoteButton = document.querySelector('.notebook__newitem');
+const newNoteButton = document.querySelector('.notebook__newitem');
 const removeNoteButton = document.querySelector('.notebook__remove');
 
-const noteSaves = [];
+const noteSaves = []; //Тут храняться записи.
 
+/*-----------Нажатие на кнопку сохранить-------------*/
 saveNoteButton.addEventListener('click', saveNote);
-
-// function saveNote() {
-//     saverNote(notesList.children.length + 1, textArea.value);
-//     notesList.innerHTML += `<li class="notebook__item" id="${notesList.children.length + 1}">Запись ${notesList.children.length + 1}</li>`
-//     console.log(noteSaves)
-// }
-
 function saveNote() {
     for (let active of notesList.children) {
         if (active.classList.contains('_active')) {
@@ -28,16 +22,16 @@ function saveNote() {
         }
     }
 }
-
+/*---------------------Выбор нужной записи слева-----------------------*/
 notesList.addEventListener('click', function (e) {
     switchNote(e);
     openNote(e.target.id);
     allNotesClose()
 })
-
-newBoteButton.addEventListener('click', newEmptyNote);
-
-var notesCounter = 1;
+/*--------------------Нажатие по кнопку новой записи----------------------*/
+newNoteButton.addEventListener('click', newEmptyNote);
+var notesCounter = 1; //счетчик для записей
+/*---Функция создания новой записи---*/
 function newEmptyNote() {
     textArea.value = '';
     notesList.innerHTML += `<li class="notebook__item" id="${notesCounter}">Запись ${notesCounter}</li>`
@@ -46,7 +40,7 @@ function newEmptyNote() {
     newNoteActiveAdder()
     allNotesClose()
 }
-/*-----------Отображает нужную запись выбранной ячейки-----------*/
+/*-------------------Отображает нужную запись выбранной ячейки в текстарее-------------------*/
 function openNote(id) {
     const numberNote = id;
     for (let k of noteSaves) {
@@ -59,7 +53,7 @@ function openNote(id) {
 function saverNote(key, value) {
     noteSaves.push({ key, value });
 }
-/*--------------------Switcher for notes. Active note class = _active---------------------*/
+/*--------------------Переключатель записей и классов для нее. Активная запись = _active---------------------*/
 function switchNote(e) {
     for (let i of notesList.children) {
         if (e.target == i) {
@@ -69,15 +63,14 @@ function switchNote(e) {
         }
     }
 }
-/*-----------Создает новой записи класс активный-------------*/
+/*-------------------Создает новой записи класс активный---------------------*/
 function newNoteActiveAdder() {
     for (let i of notesList.children) {
         i.classList.remove('_active');
     }
     notesList.lastChild.classList.add('_active');
 }
-
-
+/*-------------------Функция смотрящая на активность. Если запись не выбрана - кнопки и тд визуально отключены.--------------------*/
 function allNotesClose() {
     var clear = true;
     for (let k of notesList.children) {
@@ -98,49 +91,11 @@ function allNotesClose() {
         removeNoteButton.classList.remove('_active');
     }
 }
-//mouseenter
-// notesList.addEventListener("mouseenter", function(e){
-//     for (let b of notesList.children){
-
-//         b.addEventListener("mouseenter", function(){
-//             b.classList.add('_bin')
-//         });
-//         b.addEventListener("mouseout", function(){
-//             b.classList.remove('_bin')
-//         })
-//     }
-// })
-// function hoverItem() {
-//     const allItems = document.querySelectorAll('.notebook__item');
-//     for (let item of allItems) {
-//         item.addEventListener("mouseenter", function () {
-//             item.classList.add('_bin')
-//         });
-//     }
-//     for (let item of allItems) {
-//         item.addEventListener("mouseover", function () {
-//             item.classList.add('_bin')
-//         });
-//     }
-// }
-// items.addEventListener('hover', function (e) {
-//     for (let item of notesList.children) {
-//         if (e.target == item) {
-//             item.classList.add('_bin');
-//             console.log('bin')
-//         }
-//     }
-// })
-// }, 1000)
-
-
 /*-----------ДОРАБОТАТЬ УДАЛЕНИЕ. ПО клику - удалять строку (написана). 
 Удалить из массива ключ. Переделать логику, чтоб не повторялись ключи
 и айди + Переработать им присвоение
 UPD: СДЕЛАНО-------------*/
-
 removeNoteButton.addEventListener('click', remove);
-
 function remove(e) {
     for (let note of notesList.children) {
         if (note.classList.contains('_active')) {
@@ -156,8 +111,7 @@ function remove(e) {
     }
     allNotesClose()
 }
-
-
+/*---Анимация для удаления----*/
 function deleteAnimation() {
     const popup = document.querySelector('.popup__body');
     popup.classList.add('_open');
@@ -165,3 +119,4 @@ function deleteAnimation() {
         popup.classList.remove('_open');
     }, 1500);
 }
+
